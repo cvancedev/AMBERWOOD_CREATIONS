@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amberwood Creations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h1>Amberwood</h1>
+          <p>Handmade shirts, crochet, gifts & cozy things</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+         <a class="admin-link" href="/admin.html">
+          Admin
+        </a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Handmade in Wakeman, Ohio</p>
+        <h2>Cozy handmade goods with a personal touch.</h2>
+        <p>
+          From custom shirts to crocheted pieces, Amberwood creates warm,
+          thoughtful items for gifts, seasons, markets, and everyday comfort.
+        </p>
+
+        <div class="hero-buttons">
+          <button>View Products</button>
+          <button class="secondary">Read Updates</button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <span>Featured</span>
+        <h3>Vendor Market Season</h3>
+        <p>New shirts, crochet items, and handmade gifts are coming soon.</p>
+      </div>
+    </section>
+    <section class="spotlight">
+      <div class="spotlight-image">
+        <span>Featured Item</span>
+      </div>
+
+      <div class="spotlight-content">
+        <p class="eyebrow">Product Spotlight</p>
+        <h2>True Story Nativity Shirt</h2>
+        <p>
+          A soft, faith-inspired shirt featuring a simple nativity design. Great
+          for Christmas markets, gifts, church events, or everyday wear.
+        </p>
+
+        <ul>
+          <li>Soft gray tee</li>
+          <li>Faith-based design</li>
+          <li>Custom sizes available</li>
+        </ul>
+
+        <button>Message to Order</button>
+      </div>
+    </section>
+    <section class="vendor-shows">
+      <div class="section-heading">
+        <p class="eyebrow">Upcoming Events</p>
+        <h2>Future Vendor Show Schedule</h2>
+        <p>Come see Amberwood in person at local markets and craft shows.</p>
+      </div>
+
+      <div class="show-list" id="showList"></div>
+    </section>
+    <section class="contact-section">
+      <div class="contact-intro">
+        <p class="eyebrow">Custom Orders</p>
+        <h2>Have something in mind?</h2>
+        <p>
+          Send Amberwood a message about custom shirts, crochet items, seasonal
+          gifts, or vendor show questions.
+        </p>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-row">
+          <label for="name">Your Name</label>
+          <input id="name" type="text" placeholder="Your name" />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" placeholder="you@example.com" />
+        </div>
+
+        <div class="form-row">
+          <label for="orderType">What are you interested in?</label>
+          <select id="orderType">
+            <option>Custom shirt</option>
+            <option>Crochet item</option>
+            <option>Seasonal gift</option>
+            <option>Vendor show question</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Tell us what you’re looking for..."
+          ></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+    <main class="layout">
+      <section class="products">
+    
+        <h2>Featured Items</h2>
+
+        <div class="product-filters">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="shirts">Shirts</button>
+          <button class="filter-btn" data-category="crochet">Crochet</button>
+          <button class="filter-btn" data-category="seasonal">Seasonal</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <aside class="blog">
+        <h2>Latest Updates</h2>
+
+        <article>
+          <p class="date">February 1</p>
+          <h3>What are you working on?</h3>
+          <p>
+            Winter is a great time for crafts, planning, and creating something
+            new.
+          </p>
+        </article>
+
+        <article>
+          <p class="date">November 28</p>
+          <h3>Market Day</h3>
+          <p>
+            Come visit Amberwood at local vendor events and see the newest
+            items.
+          </p>
+        </article>
+      </aside>
+    </main>
+
+    <footer>
+      <p>Amberwood · Wakeman, Ohio · ambernc@hotmail.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

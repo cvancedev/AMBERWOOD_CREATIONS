@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amberwood Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <section class="login-card" id="loginCard">
+    <h1>Admin Login</h1>
+
+    <form id="loginForm">
+      <input id="adminPassword" type="password" placeholder="Enter admin password" />
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="loginMessage"></p>
+  </section>
+
+  <section class="admin-page hidden" id="adminPage">
+    <div class="admin-card">
+      <p class="eyebrow">Amberwood Admin</p>
+
+      <h1>Upload New Product</h1>
+
+      <form class="admin-form">
+        <input id="productTitle" type="text" placeholder="Product title" />
+
+        <textarea
+          id="productDescription"
+          placeholder="Product description"
+          rows="5"
+        ></textarea>
+
+        <select id="productCategory">
+          <option value="shirts">Shirts</option>
+          <option value="crochet">Crochet</option>
+          <option value="seasonal">Seasonal</option>
+        </select>
+
+        <input id="productImage" type="text" placeholder="Image path: images/example.jpg" />
+
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="admin.js"></script>
+</body>
+</html>
