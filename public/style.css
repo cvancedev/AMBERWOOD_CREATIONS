@@ -5,8 +5,28 @@
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  background: #f7f1e8;
+  background-color: #f7f1e8;
+  background-image: url("images/Light Green and Pink Illustrated Floral Desktop Wallpaper.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
   color: #2f241d;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 .site-header {
@@ -54,6 +74,27 @@ nav a {
   color: #5d4030;
   text-decoration: none;
   font-weight: bold;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #8c5a3c;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.26s ease;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after,
+nav a.is-active::after {
+  transform: scaleX(1);
 }
 
 .hero {
@@ -61,7 +102,11 @@ nav a {
   grid-template-columns: 1.5fr 1fr;
   gap: 36px;
   padding: 70px 7%;
-  background: linear-gradient(135deg, #fffaf2, #ead8c1);
+  margin: 26px 7%;
+  background: rgba(255, 250, 242, 0.82);
+  border: 1px solid rgba(228, 211, 189, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 20px 42px rgba(85, 54, 32, 0.16);
 }
 
 .eyebrow {
@@ -97,12 +142,22 @@ button {
   border-radius: 999px;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.26s ease, box-shadow 0.26s ease, background-color 0.26s ease,
+    color 0.26s ease;
+  box-shadow: 0 8px 18px rgba(85, 54, 32, 0.14);
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(85, 54, 32, 0.2);
 }
 
 button.secondary {
   background: transparent;
   color: #8c5a3c;
   border: 2px solid #8c5a3c;
+  box-shadow: none;
 }
 
 .hero-card {
@@ -111,7 +166,8 @@ button.secondary {
   border-radius: 24px;
   padding: 30px;
   align-self: center;
-  box-shadow: 0 18px 40px rgba(85, 54, 32, 0.12);
+  box-shadow: 0 22px 44px rgba(85, 54, 32, 0.18);
+  transform: translateY(-4px);
 }
 
 .hero-card span {
@@ -126,7 +182,25 @@ button.secondary {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
-  padding: 48px 7%;
+  padding: 0;
+  margin: 26px 7%;
+}
+
+.products,
+.blog {
+  background: rgba(255, 250, 242, 0.82);
+  border: 1px solid rgba(228, 211, 189, 0.8);
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 20px 40px rgba(85, 54, 32, 0.14);
+}
+
+.products {
+  border-top-color: rgba(233, 201, 170, 0.9);
+}
+
+.blog {
+  border-top-color: rgba(223, 203, 179, 0.95);
 }
 
 .products h2,
@@ -146,21 +220,74 @@ button.secondary {
   border: 1px solid #e4d3bd;
   border-radius: 22px;
   padding: 20px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 10px 24px rgba(85, 54, 32, 0.12);
+}
+
+.product-card:hover,
+.blog article:hover,
+.show-card:hover,
+.contact-intro:hover,
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 30px rgba(85, 54, 32, 0.18);
 }
 
 .product-image {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
   border-radius: 18px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.product-media {
+  width: min(100%, 320px);
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 0 auto 16px;
   background: #d8b99a;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.06);
 }
 
 .blog {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.starting-price {
+  margin: 10px 0 12px;
+  color: #7b6655;
+  font-weight: bold;
+}
+
+.product-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  background: #f1e2cf;
+  color: #5d4030;
+  border: 1px solid #dec8ae;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .date {
@@ -174,13 +301,18 @@ footer {
   padding: 30px;
   background: #2f241d;
   color: #fffaf2;
+  margin: 26px 7%;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(47, 36, 29, 0.18);
 }
 
 .vendor-shows {
   padding: 50px 7%;
-  background: #fffaf2;
-  border-top: 1px solid #e5d6c2;
-  border-bottom: 1px solid #e5d6c2;
+  margin: 26px 7%;
+  background: rgba(255, 250, 242, 0.8);
+  border: 1px solid rgba(228, 211, 189, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 18px 36px rgba(85, 54, 32, 0.14);
 }
 
 .section-heading {
@@ -191,6 +323,20 @@ footer {
 .section-heading h2 {
   font-size: 36px;
   margin: 8px 0;
+}
+
+.section-heading h2::after,
+.spotlight-content h2::after,
+.contact-intro h2::after,
+.products h2::after,
+.blog h2::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 3px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #8c5a3c, #e9c9aa);
 }
 
 .show-list {
@@ -204,6 +350,8 @@ footer {
   border: 1px solid #dfcbb3;
   border-radius: 22px;
   padding: 22px;
+  box-shadow: 0 10px 24px rgba(85, 54, 32, 0.1);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .show-date {
@@ -237,7 +385,11 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 34px;
   padding: 60px 7%;
-  background: #f7f1e8;
+  margin: 26px 7%;
+  background: rgba(255, 250, 242, 0.82);
+  border: 1px solid rgba(228, 211, 189, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(85, 54, 32, 0.15);
   align-items: center;
 }
 
@@ -281,7 +433,11 @@ footer {
   grid-template-columns: 1fr 1.3fr;
   gap: 34px;
   padding: 60px 7%;
-  background: #f7f1e8;
+  margin: 26px 7%;
+  background: rgba(255, 250, 242, 0.82);
+  border: 1px solid rgba(228, 211, 189, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(85, 54, 32, 0.15);
 }
 
 .contact-intro {
@@ -307,7 +463,8 @@ footer {
   border: 1px solid #e4d3bd;
   border-radius: 26px;
   padding: 28px;
-  box-shadow: 0 18px 40px rgba(85, 54, 32, 0.1);
+  box-shadow: 0 14px 30px rgba(85, 54, 32, 0.14);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .form-row {
@@ -353,14 +510,15 @@ footer {
 }
 
 .filter-btn {
-  background: #ead8c1;
+  background: rgba(234, 216, 193, 0.8);
   color: #5d4030;
-  border: none;
+  border: 1px solid rgba(222, 200, 174, 0.85);
   padding: 10px 18px;
   border-radius: 999px;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s ease;
+  box-shadow: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .filter-btn:hover {
@@ -370,6 +528,50 @@ footer {
 .filter-btn.active {
   background: #8c5a3c;
   color: white;
+}
+
+.category-icon,
+.inline-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 6px;
+  color: #8c5a3c;
+}
+
+.category-icon::before {
+  content: "◦";
+}
+
+.icon-shop::before {
+  content: "✶";
+}
+
+.icon-message::before {
+  content: "✉";
+}
+
+.icon-location::before {
+  content: "⌖";
+}
+
+.icon-event::before {
+  content: "✧";
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+}
+
+.eyebrow::after {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: rgba(140, 90, 60, 0.6);
+  margin-left: 10px;
 }
 
 .admin-page {
@@ -423,6 +625,30 @@ footer {
   background: #6f452d;
 }
 
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .hidden {
   display: none !important;
 }
@@ -469,6 +695,24 @@ footer {
 }
 
 @media (max-width: 850px) {
+  .hero,
+  .spotlight,
+  .contact-section,
+  .layout,
+  footer {
+    margin: 16px 4%;
+  }
+
+  .products,
+  .blog {
+    padding: 24px;
+  }
+
+  .product-media {
+    width: min(100%, 280px);
+    height: 240px;
+  }
+
   .site-header,
   .hero,
   .layout {
